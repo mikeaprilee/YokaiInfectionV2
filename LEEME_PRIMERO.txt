@@ -1,0 +1,33 @@
+YOKAI INFECTION - PROYECTO UNIFICADO
+
+CONTENIDO
+- MainActivity: inicio de sesión y registro local.
+- UserDatabaseHelper: base de datos SQLite con las tablas users y personajes.
+- Characters/Character.java: modelo de personaje.
+- Characters/Datos.java: datos iniciales de los diez yokai.
+- TransitionActivity: transición breve de la luna roja al entrar.
+- SelectCharacterActivity: selección de los diez yokai cargados desde SQLite.
+- CharacterActivity: ficha del yokai seleccionado.
+- Música del login en app/src/main/res/raw/yokai_login_theme.mp3.
+
+CÓMO ABRIR
+1. Descomprime el ZIP.
+2. En Android Studio selecciona Open y abre la carpeta YokaiInfection (la que contiene settings.gradle.kts).
+3. Espera a que termine Gradle Sync.
+4. Ejecuta con el botón verde Run.
+
+FLUJO
+Login correcto -> transición breve (se puede omitir tocando la pantalla) -> selección de yokai -> ficha del personaje.
+
+BASE DE DATOS
+- El archivo local se llama yokai_users.db y contiene las tablas users y personajes.
+- users almacena nombre de usuario, correo y hash/sal de contraseña.
+- personajes contiene id, nombre, tipo, descripción y nombre del recurso de imagen.
+- Los datos iniciales se toman de Characters/Datos.java y se insertan al crear la tabla por primera vez.
+- La versión 2 del esquema añade la tabla personajes sin eliminar cuentas guardadas en la versión 1.
+- Las cuentas son locales al dispositivo; no se sincronizan entre móviles.
+
+NOTAS
+- El namespace y el paquete usado en el proyecto es com.example.loginyokaiinfection.
+- Las imágenes están en app/src/main/res/drawable.
+- Si Android Studio muestra un error al compilar, revisa Build Output para ver la ruta y línea exactas.

@@ -1,0 +1,6 @@
+YOKAI INFECTION - Música del login
+
+La música está integrada en app/src/main/res/raw/yokai_login_theme.mp3.
+MainActivity la reproduce en bucle a volumen 25% al mostrar el login.
+Se pausa cuando la app queda en segundo plano o se abre otra pantalla y se libera al destruirse la actividad.
+No es necesario copiar el MP3 manualmente ni añadir permisos de almacenamiento.

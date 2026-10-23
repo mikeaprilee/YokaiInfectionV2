@@ -1,0 +1,225 @@
+
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#090909">
+
+    <!-- PORTADA -->
+    <ImageView
+        android:id="@+id/imgPortada"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/portada"
+        android:scaleType="centerCrop"
+        android:contentDescription="Portada Yokai Infection" />
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp">
+
+            <!-- TITULO JAPONES -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="妖 怪"
+                android:textColor="#C62828"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:gravity="center" />
+
+            <!-- TITULO DEL JUEGO -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YOKAI INFECTION"
+                android:textColor="#FFFFFF"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.05"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="28dp" />
+
+            <!-- LOGIN -->
+            <LinearLayout
+                android:id="@+id/loginLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:backgroundTint="#C62828"
+                    android:fontFamily="monospace"
+                    android:hint="CORREO ELECTRONICO"
+                    android:inputType="textEmailAddress"
+                    android:padding="12dp"
+                    android:singleLine="true"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="12dp"
+                    android:hint="CONTRASEÑA"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"
+                    android:padding="12dp"
+                    android:backgroundTint="#C62828" />
+
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:text="▶ ENTRAR"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:fontFamily="monospace"
+                    android:backgroundTint="#B71C1C" />
+
+                <Button
+                    android:id="@+id/btnGoRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:text="▶ REGISTRARSE"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:fontFamily="monospace"
+                    android:backgroundTint="#111111" />
+
+            </LinearLayout>
+
+            <!-- REGISTRO -->
+            <LinearLayout
+                android:id="@+id/registerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CREAR CUENTA"
+                    android:textColor="#C62828"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="monospace"
+                    android:layout_marginBottom="16dp" />
+
+                <EditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:hint="NOMBRE DE USUARIO"
+                    android:inputType="textPersonName"
+                    android:singleLine="true"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"
+                    android:padding="12dp"
+                    android:backgroundTint="#C62828" />
+
+                <EditText
+                    android:id="@+id/etRegisterEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:hint="CORREO ELECTRONICO"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"
+                    android:padding="12dp"
+                    android:backgroundTint="#C62828" />
+
+                <EditText
+                    android:id="@+id/etRegisterPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:hint="CONTRASEÑA"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"
+                    android:padding="12dp"
+                    android:backgroundTint="#C62828" />
+
+                <EditText
+                    android:id="@+id/etRepeatPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:hint="REPETIR CONTRASEÑA"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"
+                    android:padding="12dp"
+                    android:backgroundTint="#C62828" />
+
+                <Button
+                    android:id="@+id/btnCreateAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="18dp"
+                    android:text="▶ CREAR CUENTA"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:fontFamily="monospace"
+                    android:backgroundTint="#B71C1C" />
+
+                <Button
+                    android:id="@+id/btnBackLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:text="VOLVER AL LOGIN"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:fontFamily="monospace"
+                    android:backgroundTint="#111111" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

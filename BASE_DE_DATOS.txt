@@ -1,0 +1,49 @@
+BASE DE DATOS LOCAL - YOKAI INFECTION
+
+La aplicación usa una única base de datos SQLite integrada en Android. No requiere Firebase ni conexión a Internet.
+
+Archivo de base de datos:
+  yokai_users.db
+
+TABLAS
+
+1. users
+  id             Identificador numérico
+  username       Nombre del jugador
+  email          Correo electrónico (único)
+  password_hash  Verificador/hash de la contraseña
+  password_salt  Sal usada para verificar la contraseña
+
+2. personajes
+  id             Identificador numérico del personaje
+  nombre         Nombre del yokai
+  tipo           Especie o tipo de yokai
+  descripcion    Descripción del personaje
+  imagen         Nombre del recurso drawable asociado
+
+FUNCIONAMIENTO
+- Al crear una cuenta, el nombre, correo y verificador de contraseña se guardan en la tabla users.
+- Al iniciar sesión, la app consulta users y compara el verificador de contraseña.
+- Las contraseñas nuevas no se guardan en texto plano: se derivan con PBKDF2 y una sal aleatoria.
+- La tabla personajes se rellena a partir de Characters/Datos.java al crear la base de datos.
+- La pantalla de selección consulta los personajes en SQLite; ya no depende de una lista duplicada dentro de SelectCharacterActivity.
+- En instalaciones anteriores, la actualización de esquema crea la tabla personajes sin borrar la tabla users ni las cuentas existentes.
+- Si hay cuentas de la versión anterior en SharedPreferences "YokaiUsers", se intentan migrar a SQLite. Solo después de una migración satisfactoria se limpia ese almacenamiento antiguo.
+- Los datos son locales a esa instalación de Android; no se sincronizan con otros dispositivos.
+
+CLASES RELACIONADAS
+- Characters/Character.java: modelo de datos de un yokai (nombre, tipo, descripción e imagen).
+- Characters/Datos.java: catálogo inicial de los diez yokai.
+- UserDatabaseHelper.java: gestiona usuarios y personajes dentro del mismo archivo SQLite.
+
+DÓNDE VERLA EN ANDROID STUDIO
+1. Ejecuta la app en un emulador o dispositivo depurable.
+2. Registra una cuenta de prueba y entra al juego para que se cargue el catálogo.
+3. Abre View > Tool Windows > App Inspection (el nombre puede variar según la versión de Android Studio).
+4. Abre Database Inspector y selecciona yokai_users.db mientras la aplicación está en ejecución.
+5. Consulta las tablas users y personajes.
+
+También puede aparecer en Device Explorer en:
+  data/data/com.example.loginyokaiinfection/databases/yokai_users.db
+
+No edites ni compartas datos reales de cuentas para una demostración académica. Para un sistema publicado sería recomendable una autenticación de servidor y otras medidas de seguridad.

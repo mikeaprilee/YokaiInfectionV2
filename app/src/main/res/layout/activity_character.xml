@@ -1,0 +1,76 @@
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#050505"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="22dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="妖 怪"
+            android:textColor="#D71920"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace" />
+
+        <ImageView
+            android:id="@+id/imgYokaiDetail"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="Ilustración del yokai seleccionado"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/txtYokaiName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace" />
+
+        <TextView
+            android:id="@+id/txtYokaiType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:textColor="#FF3333"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace" />
+
+        <TextView
+            android:id="@+id/txtYokaiLore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:lineSpacingExtra="5dp"
+            android:textColor="#DDDDDD"
+            android:textSize="16sp"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/btnBackToSelection"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="28dp"
+            android:text="VOLVER A SELECCIÓN"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:backgroundTint="#B71C1C" />
+
+    </LinearLayout>
+</ScrollView>
