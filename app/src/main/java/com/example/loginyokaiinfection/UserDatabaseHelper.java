@@ -33,6 +33,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 2;
 
     private static final String TABLE_USERS = "users";
+    private static final String TABLE_CHARACTERS = "personajes";
     private static final String COL_ID = "id";
     private static final String COL_USERNAME = "username";
     private static final String COL_EMAIL = "email";
@@ -76,7 +77,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void createCharactersTable(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS personajes ("
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_CHARACTERS + " ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "nombre TEXT NOT NULL UNIQUE, "
                 + "tipo TEXT NOT NULL, "
@@ -95,7 +96,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
             values.put("descripcion", character.getDescripcion());
             values.put("imagen", character.getImagen());
             db.insertWithOnConflict(
-                    "personajes", null, values, SQLiteDatabase.CONFLICT_IGNORE);
+                    TABLE_CHARACTERS, null, values, SQLiteDatabase.CONFLICT_IGNORE);
         }
     }
 
