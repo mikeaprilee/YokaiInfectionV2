@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etEmail, etPassword;
     private EditText etUsername, etRegisterEmail;
     private EditText etRegisterPassword, etRepeatPassword;
+    private CheckBox cbAcceptCookies;
 
     private LinearLayout loginLayout, registerLayout;
 
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         etRegisterEmail = findViewById(R.id.etRegisterEmail);
         etRegisterPassword = findViewById(R.id.etRegisterPassword);
         etRepeatPassword = findViewById(R.id.etRepeatPassword);
+        cbAcceptCookies = findViewById(R.id.cbAcceptCookies);
 
         // Contenedores
         loginLayout = findViewById(R.id.loginLayout);
@@ -139,6 +142,14 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        if (!cbAcceptCookies.isChecked()) {
+            cbAcceptCookies.setError("Debes aceptar las cookies para continuar");
+            Toast.makeText(this,
+                    "Acepta el uso de cookies para continuar",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Comprobar formato del correo
         if (!android.util.Patterns.EMAIL_ADDRESS
                 .matcher(email).matches()) {
@@ -190,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
         etRegisterEmail.setText("");
         etRegisterPassword.setText("");
         etRepeatPassword.setText("");
+        cbAcceptCookies.setChecked(false);
 
         // Mostrar el login
         registerLayout.setVisibility(View.GONE);
