@@ -138,7 +138,19 @@
           <p class="section-summary">Los diez personajes iniciales se modelan, se guardan en SQLite y se muestran en una
             cuadrícula.</p>
           <div class="speaker-text"><strong>Texto del expositor</strong>
-            <p>Añadir aquí el texto de la exposición.</p>
+            <p><b>La lógica que sostiene el universo de personajes. </b>Primero, definimos el modelo
+              base <code>YokaiCharacter</code>, que encapsula el identificador, nombre, tipo, descripción y el nombre de
+              la imagen de cada criatura.</p>
+            <p>La carga de los 10 yokais iniciales proviene de la clase <code>Datos</code>. Al crearse la base de datos,
+              <code>UserDatabaseHelper</code> recorre esta lista y guarda la información en la tabla
+              <code>personajes</code> de SQLite, asegurando la persistencia local de nuestro catálogo.</p>
+            <p>Para mostrar este universo en pantalla, configuramos un <code>RecyclerView</code> utilizando un
+              <code>GridLayoutManager</code> a dos columnas. El responsable de dar vida a la interfaz es el
+              <code>CharacterAdapter</code>, que actúa como puente inflando el diseño individual de cada tarjeta.</p>
+            <p>Para optimizar el rendimiento, el adaptador no guarda imágenes en la base de datos; extrae el nombre en
+              formato texto y usa <code>getIdentifier</code> para cargar el recurso <code>drawable</code> dinámicamente.
+              Al tocar una tarjeta, el adaptador empaqueta los datos del yokai seleccionado y los envía a la ficha
+              detallada.</p>
           </div>
           <ul class="tech-list">
             <li><code>YokaiCharacter</code> y <code>Datos</code></li>
@@ -160,10 +172,19 @@
           <p class="section-summary">Transición tras el login, selección de yokai, ficha individual y diálogo de
             confirmación.</p>
           <div class="speaker-text"><strong>Texto del expositor</strong>
-            <p>Después del inicio de sesión se abre <code>TransitionActivity</code>. Esta pantalla recibe el nombre del usuario mediante un <code>Intent</code> y muestra una bienvenida personalizada. Un <code>Handler</code> programa el paso a la siguiente pantalla tras un segundo; si tocamos la pantalla, podemos avanzar antes.</p>
-            <p>A continuación, <code>SelectCharacterActivity</code> consulta los yokai guardados en SQLite mediante <code>UserDatabaseHelper</code> y los presenta en una cuadrícula. El <code>RecyclerView</code> organiza la lista y <code>CharacterAdapter</code> prepara cada tarjeta con la imagen, el nombre y el tipo.</p>
-            <p>Al seleccionar un yokai, el adaptador abre <code>CharacterActivity</code> y envía su nombre, tipo, descripción e imagen como extras del <code>Intent</code>. La ficha muestra esos datos y permite volver a la selección.</p>
-            <p>Desde la ficha, el botón «Jugar» abre un diálogo de confirmación. En la versión actual, al confirmar se indica que la partida estará disponible próximamente; también se puede cancelar y cerrar el diálogo. Así, la demo recorre la bienvenida, la selección y la ficha, y muestra hasta dónde llega el proyecto.</p>
+            <p>Después del inicio de sesión se abre <code>TransitionActivity</code>. Esta pantalla recibe el nombre del
+              usuario mediante un <code>Intent</code> y muestra una bienvenida personalizada. Un <code>Handler</code>
+              programa el paso a la siguiente pantalla tras un segundo; si tocamos la pantalla, podemos avanzar antes.
+            </p>
+            <p>A continuación, <code>SelectCharacterActivity</code> consulta los yokai guardados en SQLite mediante
+              <code>UserDatabaseHelper</code> y los presenta en una cuadrícula. El <code>RecyclerView</code> organiza la
+              lista y <code>CharacterAdapter</code> prepara cada tarjeta con la imagen, el nombre y el tipo.</p>
+            <p>Al seleccionar un yokai, el adaptador abre <code>CharacterActivity</code> y envía su nombre, tipo,
+              descripción e imagen como extras del <code>Intent</code>. La ficha muestra esos datos y permite volver a
+              la selección.</p>
+            <p>Desde la ficha, el botón «Jugar» abre un diálogo de confirmación. En la versión actual, al confirmar se
+              indica que la partida estará disponible próximamente; también se puede cancelar y cerrar el diálogo. Así,
+              la demo recorre la bienvenida, la selección y la ficha, y muestra hasta dónde llega el proyecto.</p>
           </div>
           <ul class="tech-list">
             <li><code>TransitionActivity</code></li>
@@ -245,7 +266,7 @@
             <a href="https://github.com/AlbertoMC2401" target="_blank" rel="noopener noreferrer">@AlbertoMC2401</a>
           </article>
           <article class="team-card">
-            <div class="member-photo">Añadir foto</div>
+            <div class="member-photo"><img src="Fotos/alejandra.jpg" alt=""></div>
             <h3>Alejandra Morales Devreese</h3>
             <a href="https://github.com/alejandraamorales" target="_blank"
               rel="noopener noreferrer">@alejandraamorales</a>
