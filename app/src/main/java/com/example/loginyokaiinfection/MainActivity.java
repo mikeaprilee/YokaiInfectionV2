@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         );
 
         startBackgroundMusic();
-        // Música ambiental del login, en bucle y a volumen moderado.
-        startBackgroundMusic();
 
         // Base de datos SQLite local. También migra cuentas antiguas si existen.
         userDatabase = new UserDatabaseHelper(this);
