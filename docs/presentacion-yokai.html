@@ -160,7 +160,10 @@
           <p class="section-summary">Transición tras el login, selección de yokai, ficha individual y diálogo de
             confirmación.</p>
           <div class="speaker-text"><strong>Texto del expositor</strong>
-            <p>Añadir aquí el texto de la exposición.</p>
+            <p>Después del inicio de sesión se abre <code>TransitionActivity</code>. Esta pantalla recibe el nombre del usuario mediante un <code>Intent</code> y muestra una bienvenida personalizada. Un <code>Handler</code> programa el paso a la siguiente pantalla tras un segundo; si tocamos la pantalla, podemos avanzar antes.</p>
+            <p>A continuación, <code>SelectCharacterActivity</code> consulta los yokai guardados en SQLite mediante <code>UserDatabaseHelper</code> y los presenta en una cuadrícula. El <code>RecyclerView</code> organiza la lista y <code>CharacterAdapter</code> prepara cada tarjeta con la imagen, el nombre y el tipo.</p>
+            <p>Al seleccionar un yokai, el adaptador abre <code>CharacterActivity</code> y envía su nombre, tipo, descripción e imagen como extras del <code>Intent</code>. La ficha muestra esos datos y permite volver a la selección.</p>
+            <p>Desde la ficha, el botón «Jugar» abre un diálogo de confirmación. En la versión actual, al confirmar se indica que la partida estará disponible próximamente; también se puede cancelar y cerrar el diálogo. Así, la demo recorre la bienvenida, la selección y la ficha, y muestra hasta dónde llega el proyecto.</p>
           </div>
           <ul class="tech-list">
             <li><code>TransitionActivity</code></li>
@@ -232,7 +235,7 @@
             <a href="https://github.com/mikeaprilee" target="_blank" rel="noopener noreferrer">@mikeaprilee</a>
           </article>
           <article class="team-card">
-            <div class="member-photo">Añadir foto</div>
+            <div class="member-photo"><img src="Fotos/juan-guillermo.jpeg" alt="Juan Guillermo Domínguez Guzmán"></div>
             <h3>Juan Guillermo Domínguez Guzmán</h3>
             <a href="https://github.com/JGdg9" target="_blank" rel="noopener noreferrer">@JGdg9</a>
           </article>
