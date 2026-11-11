@@ -40,9 +40,7 @@
       <div class="shell">
         <div class="section-heading">
           <div class="kicker">Índice de la exposición</div>
-          <h2>Cuatro apartados para contar el proyecto.</h2>
-          <p class="lead">Cada bloque lleva a un apartado independiente donde el integrante correspondiente podrá
-            desarrollar su parte y añadir su vídeo o GIF.</p>
+          <h2>Apartados del proyecto.</h2>
         </div>
         <div class="grid-4">
           <a class="card index-card" href="#bloque-acceso">
@@ -75,34 +73,43 @@
       </div>
     </section>
 
-    <section id="reparto">
-      <div class="shell">
-        <div class="section-heading">
-          <div class="kicker">Apartados independientes</div>
-          <h2>Cuatro voces, una historia técnica.</h2>
-          <p class="lead">Cada integrante tiene su propio espacio para añadir el texto de su exposición y el vídeo o GIF
-            correspondiente.</p>
-        </div>
-      </div>
-    </section>
+
 
     <section class="exposition-section" id="bloque-acceso">
       <div class="shell exposition-grid">
         <div>
-          <div class="kicker">01 · Integrante 1</div>
+          <div class="kicker">01 · Alberto Martínez
+            Carrasco</div>
           <h2>Introducción, diseño y acceso</h2>
           <p class="section-summary">Vídeo introductorio, estética pixel japonesa, login, registro, música ambiental y
             partículas rojas.</p>
           <div class="speaker-text"><strong>Texto del expositor</strong>
-            <p>Para YokaiInfection, hemos diseñado una pantalla de acceso que fusiona una identidad visual inmersiva con una arquitectura de datos local altamente segura y eficiente:
+            <p>Para YokaiInfection, hemos diseñado una pantalla de acceso que fusiona una identidad visual inmersiva con
+              una arquitectura de datos local altamente segura y eficiente:
               <br>
-              <b>1.Diseño Visual e Inmersión Temática:</b> La interfaz utiliza un FrameLayout que superpone una ilustración de portada <code>imgPortada</code> con un fondo oscuro y fuentes tipográficas monoespaciadas, integrando caracteres japoneses (妖 怪) para contextualizar la atmósfera de terror y misterio del juego. Todo está estructurado dentro de un <code>ScrollView</code> para garantizar una correcta visualización en cualquier resolución o tamaño de pantalla móvil.
+              <b>1.Diseño Visual e Inmersión Temática:</b> La interfaz utiliza un FrameLayout que superpone una
+              ilustración de portada <code>imgPortada</code> con un fondo oscuro y fuentes tipográficas monoespaciadas,
+              integrando caracteres japoneses (妖 怪) para contextualizar la atmósfera de terror y misterio del juego.
+              Todo está estructurado dentro de un <code>ScrollView</code> para garantizar una correcta visualización en
+              cualquier resolución o tamaño de pantalla móvil.
               <br>
-              <b>2. Gestión de Vistas Dinámica y Fluida:</b> En lugar de recargar actividades independientes, empleamos una única code <code>MainActivity</code> que alterna dinámicamente la visibilidad (<code>View.GONE</code> / <code>View.VISIBLE</code>) entre el bloque de inicio de sesión (<code>loginLayout</code>) y el de registro <code>registerLayout</code>, optimizando los recursos del sistema.
+              <b>2. Gestión de Vistas Dinámica y Fluida:</b> En lugar de recargar actividades independientes, empleamos
+              una única code <code>MainActivity</code> que alterna dinámicamente la visibilidad (<code>View.GONE</code>
+              / <code>View.VISIBLE</code>) entre el bloque de inicio de sesión (<code>loginLayout</code>) y el de
+              registro <code>registerLayout</code>, optimizando los recursos del sistema.
               <br>
-              <b>3. Seguridad y Persistencia Local Robusta:</b> Las credenciales de los usuarios no se exponen; se gestionan mediante una base de datos SQLite <code>UserDatabaseHelper</code> aplicando hashing con sal para las contraseñas. Además, el sistema incorpora un mecanismo de migración automática de datos heredados <code>SharedPreferences</code>, asegurando que ningún usuario pierda su cuenta ante futuras actualizaciones.
+              <b>3. Seguridad y Persistencia Local Robusta:</b> Las credenciales de los usuarios no se exponen; se
+              gestionan mediante una base de datos SQLite <code>UserDatabaseHelper</code> aplicando hashing con sal para
+              las contraseñas. Además, el sistema incorpora un mecanismo de migración automática de datos heredados
+              <code>SharedPreferences</code>, asegurando que ningún usuario pierda su cuenta ante futuras
+              actualizaciones.
               <br>
-              <b>4. Optimización del Ciclo de Vida del Audio:</b> Mediante la clase MediaPlayer, la música ambiental del login <code>yokai_login_theme</code> se reproduce en bucle a volumen moderado (0.25f), pausándose o liberando memoria automáticamente según los estados del ciclo de vida de Android con <code>onResume</code>, <code>onPause</code>, <code>onDestroy</code> para evitar consumos innecesarios de batería o CPU.</p>
+              <b>4. Optimización del Ciclo de Vida del Audio:</b> Mediante la clase MediaPlayer, la música ambiental del
+              login <code>yokai_login_theme</code> se reproduce en bucle a volumen moderado (0.25f), pausándose o
+              liberando memoria automáticamente según los estados del ciclo de vida de Android con
+              <code>onResume</code>, <code>onPause</code>, <code>onDestroy</code> para evitar consumos innecesarios de
+              batería o CPU.
+            </p>
           </div>
           <ul class="tech-list">
             <li><code>IntroActivity</code></li>
@@ -111,20 +118,49 @@
             <li><code>activity_intro.xml</code> y <code>activity_main.xml</code></li>
           </ul>
         </div>
-        <div class="media-slot"><span>Vídeo / GIF del apartado 1</span><small>Añadir archivo multimedia aquí</small>
+        <div class="media-slot video-slot">
+          <video class="demo-video" autoplay loop muted playsinline preload="metadata"
+            aria-label="Recorrido por la bienvenida, la selección de yokai y la ficha del personaje">
+            <source src="Videos/Registro.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este vídeo.
+          </video>
+          <small>Recorrido: video, login, registrarse</small>
         </div>
       </div>
     </section>
 
     <section class="exposition-section" id="bloque-datos">
-      <div class="shell exposition-grid">
+      <div class="shell exposition-grid datos-grid">
         <div>
-          <div class="kicker">02 · Integrante 2</div>
+          <div class="kicker">02 · Michael Alessandro Aprile
+            Mancha</div>
           <h2>Base de datos y usuarios</h2>
           <p class="section-summary">SQLite local, tablas de usuarios y personajes, migración y protección de
             contraseñas.</p>
           <div class="speaker-text"><strong>Texto del expositor</strong>
-            <p>Añadir aquí el texto de la exposición.</p>
+            <p>
+              Uno de los puntos más importantes de Yokai Infection es que la aplicación
+              guarda y gestiona toda la información de forma local. Gracias a SQLite, el
+              usuario puede registrarse, iniciar sesión y consultar el catálogo de yokai
+              sin depender de una conexión a Internet. Esto hace que la experiencia sea
+              rápida, estable y segura.
+            </p>
+
+            <p>
+              La aplicación no guarda las contraseñas directamente. Utilizamos
+              <code>PBKDF2</code> y una sal aleatoria para protegerlas, de manera que los
+              datos del usuario no quedan expuestos. Además, el sistema conserva las
+              cuentas creadas en versiones anteriores mediante una migración automática,
+              evitando que el jugador pierda su progreso o tenga que registrarse de nuevo.
+            </p>
+
+            <p>
+              Todo esto ocurre detrás de una interfaz diseñada para que el usuario no tenga
+              que preocuparse por la parte técnica. Desde que crea su cuenta hasta que
+              entra en el mundo de los yokai, la aplicación ofrece un recorrido fluido,
+              inmersivo y preparado para seguir creciendo con nuevas criaturas,
+              funcionalidades y futuras partidas.
+            </p>
           </div>
           <ul class="tech-list">
             <li><code>UserDatabaseHelper</code></li>
@@ -133,7 +169,13 @@
             <li>Migración desde <code>SharedPreferences</code></li>
           </ul>
         </div>
-        <div class="media-slot"><span>Vídeo / GIF del apartado 2</span><small>Añadir archivo multimedia aquí</small>
+        <div class="media-slot video-slot">
+          <video class="demo-video" autoplay loop muted playsinline preload="metadata"
+            aria-label="Recorrido por la bienvenida, la selección de yokai y la ficha del personaje">
+            <source src="Videos/base de datos.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este vídeo.
+          </video>
+          <small>Recorrido: Base de datos, Usuarios y personajes</small>
         </div>
       </div>
     </section>
@@ -141,7 +183,8 @@
     <section class="exposition-section" id="bloque-catalogo">
       <div class="shell exposition-grid">
         <div>
-          <div class="kicker">03 · Integrante 3</div>
+          <div class="kicker">03 · Alejandra Morales
+            Devreese</div>
           <h2>Modelo y catálogo de yokai</h2>
           <p class="section-summary">Los diez personajes iniciales se modelan, se guardan en SQLite y se muestran en una
             cuadrícula.</p>
@@ -151,10 +194,12 @@
               la imagen de cada criatura.</p>
             <p>La carga de los 10 yokais iniciales proviene de la clase <code>Datos</code>. Al crearse la base de datos,
               <code>UserDatabaseHelper</code> recorre esta lista y guarda la información en la tabla
-              <code>personajes</code> de SQLite, asegurando la persistencia local de nuestro catálogo.</p>
+              <code>personajes</code> de SQLite, asegurando la persistencia local de nuestro catálogo.
+            </p>
             <p>Para mostrar este universo en pantalla, configuramos un <code>RecyclerView</code> utilizando un
               <code>GridLayoutManager</code> a dos columnas. El responsable de dar vida a la interfaz es el
-              <code>CharacterAdapter</code>, que actúa como puente inflando el diseño individual de cada tarjeta.</p>
+              <code>CharacterAdapter</code>, que actúa como puente inflando el diseño individual de cada tarjeta.
+            </p>
             <p>Para optimizar el rendimiento, el adaptador no guarda imágenes en la base de datos; extrae el nombre en
               formato texto y usa <code>getIdentifier</code> para cargar el recurso <code>drawable</code> dinámicamente.
               Al tocar una tarjeta, el adaptador empaqueta los datos del yokai seleccionado y los envía a la ficha
@@ -167,7 +212,13 @@
             <li>Recursos <code>drawable</code></li>
           </ul>
         </div>
-        <div class="media-slot"><span>Vídeo / GIF del apartado 3</span><small>Añadir archivo multimedia aquí</small>
+        <div class="media-slot video-slot">
+          <video class="demo-video" autoplay loop muted playsinline preload="metadata"
+            aria-label="Recorrido por la bienvenida, la selección de yokai y la ficha del personaje">
+            <source src="Videos/ScrollPersonaje.mp4" type="video/mp4">
+            Tu navegador no puede reproducir este vídeo.
+          </video>
+          <small>Recorrido: yokaiCharacter, RecyclerView y drawable </small>
         </div>
       </div>
     </section>
@@ -186,7 +237,8 @@
             </p>
             <p>A continuación, <code>SelectCharacterActivity</code> consulta los yokai guardados en SQLite mediante
               <code>UserDatabaseHelper</code> y los presenta en una cuadrícula. El <code>RecyclerView</code> organiza la
-              lista y <code>CharacterAdapter</code> prepara cada tarjeta con la imagen, el nombre y el tipo.</p>
+              lista y <code>CharacterAdapter</code> prepara cada tarjeta con la imagen, el nombre y el tipo.
+            </p>
             <p>Al seleccionar un yokai, el adaptador abre <code>CharacterActivity</code> y envía su nombre, tipo,
               descripción e imagen como extras del <code>Intent</code>. La ficha muestra esos datos y permite volver a
               la selección.</p>
@@ -202,7 +254,7 @@
           </ul>
         </div>
         <div class="media-slot video-slot">
-          <video class="demo-video" controls playsinline preload="metadata"
+          <video class="demo-video" autoplay loop muted playsinline preload="metadata"
             aria-label="Recorrido por la bienvenida, la selección de yokai y la ficha del personaje">
             <source src="Videos/recorrido-guille.mp4" type="video/mp4">
             Tu navegador no puede reproducir este vídeo.
@@ -265,7 +317,7 @@
         </div>
         <div class="team-grid">
           <article class="team-card">
-            <div class="member-photo"><img src="Fotos/6.jpg" alt=""></div>
+            <div class="member-photo"><img src="Fotos/Michael.jpg" alt=""></div>
             <h3>Michael Alessandro Aprile Mancha</h3>
             <a href="https://github.com/mikeaprilee" target="_blank" rel="noopener noreferrer">@mikeaprilee</a>
           </article>
@@ -312,4 +364,5 @@
   </footer>
   <script src="presentacion-yokai.js" defer></script>
 </body>
+
 </html>
