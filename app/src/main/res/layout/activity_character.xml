@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#050505"
+    android:background="@color/yokai_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="妖 怪"
-            android:textColor="#D71920"
+            android:textColor="@color/yokai_red_title"
             android:textSize="32sp"
             android:textStyle="bold"
             android:fontFamily="monospace" />
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:gravity="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/yokai_text_primary"
             android:textSize="26sp"
             android:textStyle="bold"
             android:fontFamily="monospace" />
@@ -57,9 +57,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:lineSpacingExtra="5dp"
-            android:textColor="#DDDDDD"
+            android:textColor="@color/yokai_text_lore"
             android:textSize="16sp"
             android:gravity="center" />
+
+        <Button
+            android:id="@+id/btnPlayCharacter"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="20dp"
+            android:text="JUGAR"
+            android:textColor="@color/yokai_text_primary"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:backgroundTint="@color/yokai_red" />
 
         <Button
             android:id="@+id/btnBackToSelection"
@@ -67,10 +78,10 @@
             android:layout_height="52dp"
             android:layout_marginTop="28dp"
             android:text="VOLVER A SELECCIÓN"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/yokai_text_primary"
             android:textStyle="bold"
             android:fontFamily="monospace"
-            android:backgroundTint="#B71C1C" />
+            android:backgroundTint="@color/yokai_red_dark" />
 
     </LinearLayout>
 </ScrollView>

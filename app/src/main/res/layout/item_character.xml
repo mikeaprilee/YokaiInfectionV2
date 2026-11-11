@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/characterCard"
     android:layout_width="match_parent"
     android:layout_height="220dp"
@@ -7,8 +9,6 @@
     android:background="@drawable/card_button_background"
     android:clickable="true"
     android:focusable="true"
-    android:gravity="center"
-    android:orientation="vertical"
     android:padding="6dp">
 
     <ImageView
@@ -16,25 +16,36 @@
         android:layout_width="126dp"
         android:layout_height="126dp"
         android:contentDescription="@null"
-        android:scaleType="fitCenter" />
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtCharacterName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="monospace"
         android:gravity="center"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/yokai_text_primary"
         android:textSize="13sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgCharacter" />
 
     <TextView
         android:id="@+id/txtCharacterType"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
         android:gravity="center"
-        android:textColor="#FF7777"
-        android:textSize="11sp" />
-</LinearLayout>
+        android:textColor="@color/yokai_text_red"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtCharacterName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

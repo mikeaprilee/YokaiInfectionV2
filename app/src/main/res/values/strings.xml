@@ -1,3 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">YOKAI INFECTION</string>
+
+    <string name="title_japanese">妖 怪</string>
+    <string name="game_title">YOKAI INFECTION</string>
+
+    <string name="login_email_hint">CORREO ELECTRONICO</string>
+    <string name="login_password_hint">CONTRASEÑA</string>
+    <string name="login_enter">▶ ENTRAR</string>
+    <string name="login_register">▶ REGISTRARSE</string>
+
+    <string name="register_title">CREAR CUENTA</string>
+    <string name="register_username_hint">NOMBRE DE USUARIO</string>
+    <string name="register_email_hint">CORREO ELECTRONICO</string>
+    <string name="register_password_hint">CONTRASEÑA</string>
+    <string name="register_repeat_password_hint">REPETIR CONTRASEÑA</string>
+    <string name="accept_cookies">Acepto el uso de cookies</string>
+    <string name="register_create">▶ CREAR CUENTA</string>
+    <string name="register_back_login">VOLVER AL LOGIN</string>
+
+    <string name="transition_welcome">LA LUNA ROJA DESPIERTA</string>
+    <string name="transition_continue">TOCA PARA CONTINUAR</string>
+
+    <string name="select_yokai">SELECCIONA TU YOKAI</string>
+    <string name="select_carefully">ELIGE CON CUIDADO</string>
+
+    <string name="character_play">JUGAR</string>
+    <string name="character_back">VOLVER A SELECCIÓN</string>
+
+    <string name="dialog_confirm_title">¿COMENZAR PARTIDA?</string>
+    <string name="dialog_cancel">CANCELAR</string>
+    <string name="dialog_play">JUGAR</string>
+    <string name="confirm_play_message">
+        ¿Estás seguro de que quieres jugar con %1$s?
+    </string>
+
 </resources>
