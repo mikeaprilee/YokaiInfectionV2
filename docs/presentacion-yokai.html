@@ -94,7 +94,15 @@
           <p class="section-summary">Vídeo introductorio, estética pixel japonesa, login, registro, música ambiental y
             partículas rojas.</p>
           <div class="speaker-text"><strong>Texto del expositor</strong>
-            <p>Añadir aquí el texto de la exposición.</p>
+            <p>Para YokaiInfection, hemos diseñado una pantalla de acceso que fusiona una identidad visual inmersiva con una arquitectura de datos local altamente segura y eficiente:
+              <br>
+              <b>1.Diseño Visual e Inmersión Temática:</b> La interfaz utiliza un FrameLayout que superpone una ilustración de portada <code>imgPortada</code> con un fondo oscuro y fuentes tipográficas monoespaciadas, integrando caracteres japoneses (妖 怪) para contextualizar la atmósfera de terror y misterio del juego. Todo está estructurado dentro de un <code>ScrollView</code> para garantizar una correcta visualización en cualquier resolución o tamaño de pantalla móvil.
+              <br>
+              <b>2. Gestión de Vistas Dinámica y Fluida:</b> En lugar de recargar actividades independientes, empleamos una única code <code>MainActivity</code> que alterna dinámicamente la visibilidad (<code>View.GONE</code> / <code>View.VISIBLE</code>) entre el bloque de inicio de sesión (<code>loginLayout</code>) y el de registro <code>registerLayout</code>, optimizando los recursos del sistema.
+              <br>
+              <b>3. Seguridad y Persistencia Local Robusta:</b> Las credenciales de los usuarios no se exponen; se gestionan mediante una base de datos SQLite <code>UserDatabaseHelper</code> aplicando hashing con sal para las contraseñas. Además, el sistema incorpora un mecanismo de migración automática de datos heredados <code>SharedPreferences</code>, asegurando que ningún usuario pierda su cuenta ante futuras actualizaciones.
+              <br>
+              <b>4. Optimización del Ciclo de Vida del Audio:</b> Mediante la clase MediaPlayer, la música ambiental del login <code>yokai_login_theme</code> se reproduce en bucle a volumen moderado (0.25f), pausándose o liberando memoria automáticamente según los estados del ciclo de vida de Android con <code>onResume</code>, <code>onPause</code>, <code>onDestroy</code> para evitar consumos innecesarios de batería o CPU.</p>
           </div>
           <ul class="tech-list">
             <li><code>IntroActivity</code></li>
@@ -267,7 +275,7 @@
             <a href="https://github.com/JGdg9" target="_blank" rel="noopener noreferrer">@JGdg9</a>
           </article>
           <article class="team-card">
-            <div class="member-photo">Añadir foto</div>
+            <div class="member-photo"><img src="Fotos/alberto.jpg" alt="Alberto Martínez Carrasco"></div>
             <h3>Alberto Martínez Carrasco</h3>
             <a href="https://github.com/AlbertoMC2401" target="_blank" rel="noopener noreferrer">@AlbertoMC2401</a>
           </article>
@@ -304,5 +312,4 @@
   </footer>
   <script src="presentacion-yokai.js" defer></script>
 </body>
-
 </html>
