@@ -6,24 +6,23 @@ import java.util.Locale;
  * Modelo de un personaje yokai.
  * Acepta el formato antiguo "Nombre - Tipo" para conservar compatibilidad con Datos.
  */
-public class Character {
+public class YokaiCharacter {
     private int id;
     private String nombre;
     private String tipo;
     private String descripcion;
     private String imagen;
 
-    public Character(String nombre, String descripcion) {
+    public YokaiCharacter(String nombre, String descripcion) {
         this(0, nombre, descripcion);
     }
 
-    public Character(int id, String nombre, String descripcion) {
+    public YokaiCharacter(int id, String nombre, String descripcion) {
         this(id, cleanName(nombre), extractType(nombre), descripcion,
                 makeImageName(cleanName(nombre)));
     }
 
-    public Character(int id, String nombre, String tipo,
-                     String descripcion, String imagen) {
+    public YokaiCharacter(int id, String nombre, String tipo, String descripcion, String imagen) {
         this.id = id;
         this.nombre = nombre == null ? "" : nombre.trim();
         this.tipo = tipo == null ? "Yokai" : tipo.trim();

@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.util.Base64;
 
-import com.example.loginyokaiinfection.Characters.Character;
+import com.example.loginyokaiinfection.Characters.YokaiCharacter;
 import com.example.loginyokaiinfection.Characters.Datos;
 
 import java.util.ArrayList;
@@ -23,22 +23,25 @@ import java.util.Map;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-/**
- * Base de datos SQLite local de Yokai Infection: usuarios y personajes.
- * Las contraseñas se guardan como hash con sal, nunca como texto plano.
+/*
+Base de datos SQLite local de Yokai Infection: usuarios y personajes.
+Las contraseñas se guardan como hash con sal, nunca como texto plano.
  */
+
 public class UserDatabaseHelper extends SQLiteOpenHelper {
 
+    //Creación de constantes principales
     private static final String DATABASE_NAME = "yokai_users.db";
     private static final int DATABASE_VERSION = 2;
-
     private static final String TABLE_USERS = "users";
+    private static final String TABLE_CHARACTERS = "personajes";
     private static final String COL_ID = "id";
     private static final String COL_USERNAME = "username";
     private static final String COL_EMAIL = "email";
     private static final String COL_PASSWORD_HASH = "password_hash";
     private static final String COL_PASSWORD_SALT = "password_salt";
 
+    // Con esto protegemos la contraseña e impedimos los ataques a fuerza bruta.
     private static final int SALT_BYTES = 16;
     private static final int HASH_BITS = 256;
     private static final int HASH_ITERATIONS = 100_000;
@@ -54,10 +57,12 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
         insertInitialCharacters(db);
     }
 
+    /*
+    La versión 1 solo tenía usuarios. Se añade la tabla de personajes
+    sin borrar la tabla users ni las cuentas ya registradas.
+    */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // La versión 1 solo tenía usuarios. Se añade la tabla de personajes
-        // sin borrar la tabla users ni las cuentas ya registradas.
         if (oldVersion < 2) {
             createCharactersTable(db);
             insertInitialCharacters(db);
@@ -65,7 +70,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void createUsersTable(SQLiteDatabase db) {
-        String createUsersTable = "CREATE TABLE IF NOT EXISTS " + TABLE_USERS + " ("
+        String createUsersTable = "CREATE TABLE IF NOT EXISTS " + TABLE_USERS + "("
                 + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_USERNAME + " TEXT NOT NULL, "
                 + COL_EMAIL + " TEXT NOT NULL COLLATE NOCASE UNIQUE, "
@@ -76,7 +81,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void createCharactersTable(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS personajes ("
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_CHARACTERS + " ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "nombre TEXT NOT NULL UNIQUE, "
                 + "tipo TEXT NOT NULL, "
@@ -85,23 +90,23 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
                 + ")");
     }
 
-    /** Inserta el catálogo de Datos una única vez por personaje. */
+    // Inserta el catálogo de Datos una única vez por personaje.
     private void insertInitialCharacters(SQLiteDatabase db) {
         Datos datos = new Datos();
-        for (Character character : datos.getDatos()) {
+        for (YokaiCharacter character : datos.getDatos()) {
             ContentValues values = new ContentValues();
             values.put("nombre", character.getNombre());
             values.put("tipo", character.getTipo());
             values.put("descripcion", character.getDescripcion());
             values.put("imagen", character.getImagen());
             db.insertWithOnConflict(
-                    "personajes", null, values, SQLiteDatabase.CONFLICT_IGNORE);
+                    TABLE_CHARACTERS, null, values, SQLiteDatabase.CONFLICT_IGNORE);
         }
     }
 
-    /** Devuelve los personajes desde SQLite para la pantalla de selección. */
-    public List<Character> getCharacters() {
-        List<Character> characters = new ArrayList<>();
+    // Devuelve los personajes desde SQLite para la pantalla de selección.
+    public List<YokaiCharacter> getCharacters() {
+        List<YokaiCharacter> yokaiCharacters = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
 
         try (Cursor cursor = db.query(
@@ -109,7 +114,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
                 new String[]{"id", "nombre", "tipo", "descripcion", "imagen"},
                 null, null, null, null, "id ASC")) {
             while (cursor.moveToNext()) {
-                characters.add(new Character(
+                yokaiCharacters.add(new YokaiCharacter(
                         cursor.getInt(0),
                         cursor.getString(1),
                         cursor.getString(2),
@@ -118,7 +123,7 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
                 ));
             }
         }
-        return characters;
+        return yokaiCharacters;
     }
 
     public boolean emailExists(String email) {
@@ -203,11 +208,11 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
         return "Jugador";
     }
 
-    /**
-     * Migra usuarios de la versión anterior, que usaba SharedPreferences.
-     * Si la migración termina correctamente, elimina las contraseñas antiguas
-     * guardadas en texto plano de ese archivo de preferencias.
-     */
+    /*
+    Migra usuarios de la versión anterior, que usaba SharedPreferences.
+    Si la migración termina correctamente, elimina las contraseñas antiguas
+    guardadas en texto plano de ese archivo de preferencias.
+    */
     public void migrateLegacyUsers(SharedPreferences legacyPreferences) {
         Map<String, ?> entries = legacyPreferences.getAll();
         boolean foundLegacyUser = false;
@@ -220,8 +225,8 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
             if (!key.startsWith("password_") || !(value instanceof String)) {
                 continue;
             }
-
-            String email = normalizeEmail(key.substring("password_".length()));
+            String legacyEmail = key.substring("password_".length());
+            String email = normalizeEmail(legacyEmail);
             String password = (String) value;
             if (email.isEmpty() || !email.contains("@") || password.isEmpty()) {
                 continue;
@@ -229,9 +234,15 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
 
             foundLegacyUser = true;
             if (!emailExists(email)) {
-                String username = legacyPreferences.getString("username_" + email, "Jugador");
-                if (!registerUser(username == null ? "Jugador" : username, email, password)) {
-                    // Puede que otro ciclo ya haya insertado el correo.
+                String username = legacyPreferences.getString(
+                        "username_" + legacyEmail,
+                        "Jugador"
+                );
+                String safeUsername = username == null || username.trim().isEmpty()
+                        ? "Jugador"
+                        : username.trim();
+                if (!registerUser(safeUsername, email, password)) {
+                    // Puede que otro proceso ya haya insertado el correo.
                     if (!emailExists(email)) {
                         migrationSucceeded = false;
                     }
