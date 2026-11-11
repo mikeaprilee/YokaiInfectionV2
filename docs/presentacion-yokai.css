@@ -400,6 +400,25 @@ section {
   font-weight: 400;
 }
 
+.video-slot {
+  padding: 22px;
+}
+
+.video-slot .demo-video {
+  display: block;
+  width: min(100%, 360px);
+  max-height: min(76vh, 760px);
+  border: 1px solid rgba(215, 25, 32, .55);
+  border-radius: 16px;
+  background: #050505;
+  box-shadow: var(--shadow);
+}
+
+.video-slot small {
+  max-width: 360px;
+  line-height: 1.5;
+}
+
 .showcase {
   display: grid;
   grid-template-columns: .85fr 1.15fr;
