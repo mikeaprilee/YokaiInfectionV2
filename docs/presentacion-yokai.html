@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Presentación del estado actual de Yokai Infection V2">
+  <title>Yokai Infection V2 · Presentación</title>
+  <link rel="stylesheet" href="presentacion-yokai.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#inicio">YOKAI INFECTION</span></a>
+      <nav aria-label="Navegación de la presentación">
+        <a href="#producto">Índice</a>
+        <a href="#reparto">Exposición</a>
+        <a href="#demo">Demo visual</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow">Presentación de estado actual · Android</div>
+          <h1>Entra en la noche.<br><span class="gradient">Conoce tu yokai.</span></h1>
+          <p class="lead">Yokai Infection, un juego donde te invadirán los espíritus yokai.</p>
+        </div>
+        <div class="hero-card" aria-label="Composición visual con luna roja e icono de la aplicación">
+          <div class="moon"></div>
+          <img class="hero-image" src="../app/src/main/res/drawable/icono.jpeg" alt="Icono de Yokai Infection">
+        </div>
+      </div>
+    </section>
+
+    <section id="producto">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="kicker">Índice de la exposición</div>
+          <h2>Cuatro apartados para contar el proyecto.</h2>
+          <p class="lead">Cada bloque lleva a un apartado independiente donde el integrante correspondiente podrá
+            desarrollar su parte y añadir su vídeo o GIF.</p>
+        </div>
+        <div class="grid-4">
+          <a class="card index-card" href="#bloque-acceso">
+            <div class="number">01 / ACCESO</div>
+            <h3>Introducción, diseño y acceso</h3>
+            <p>Vídeo introductorio, estética, login, registro, música y partículas.</p>
+          </a>
+          <a class="card index-card" href="#bloque-datos">
+            <div class="number">02 / DATOS</div>
+            <h3>Base de datos y usuarios</h3>
+            <p>Persistencia local, usuarios, migración y protección de contraseñas.</p>
+          </a>
+          <a class="card index-card" href="#bloque-catalogo">
+            <div class="number">03 / CATÁLOGO</div>
+            <h3>Modelo y catálogo de yokai</h3>
+            <p>Modelo, datos iniciales, SQLite, RecyclerView y tarjetas.</p>
+          </a>
+          <a class="card index-card" href="#bloque-navegacion">
+            <div class="number">04 / RECORRIDO</div>
+            <h3>Navegación, ficha y estado actual</h3>
+            <p>Transición, selección, ficha y situación actual de la partida.</p>
+          </a>
+        </div>
+        <div class="route" aria-label="Índice de apartados">
+          <span class="step">01 Acceso</span><span class="arrow">→</span>
+          <span class="step">02 Datos</span><span class="arrow">→</span>
+          <span class="step">03 Catálogo</span><span class="arrow">→</span>
+          <span class="step">04 Recorrido</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="reparto">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="kicker">Apartados independientes</div>
+          <h2>Cuatro voces, una historia técnica.</h2>
+          <p class="lead">Cada integrante tiene su propio espacio para añadir el texto de su exposición y el vídeo o GIF
+            correspondiente.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="exposition-section" id="bloque-acceso">
+      <div class="shell exposition-grid">
+        <div>
+          <div class="kicker">01 · Integrante 1</div>
+          <h2>Introducción, diseño y acceso</h2>
+          <p class="section-summary">Vídeo introductorio, estética pixel japonesa, login, registro, música ambiental y
+            partículas rojas.</p>
+          <div class="speaker-text"><strong>Texto del expositor</strong>
+            <p>Para YokaiInfection, hemos diseñado una pantalla de acceso que fusiona una identidad visual inmersiva con una arquitectura de datos local altamente segura y eficiente:
+              <br>
+              <b>1.Diseño Visual e Inmersión Temática:</b> La interfaz utiliza un FrameLayout que superpone una ilustración de portada <code>imgPortada</code> con un fondo oscuro y fuentes tipográficas monoespaciadas, integrando caracteres japoneses (妖 怪) para contextualizar la atmósfera de terror y misterio del juego. Todo está estructurado dentro de un <code>ScrollView</code> para garantizar una correcta visualización en cualquier resolución o tamaño de pantalla móvil.
+              <br>
+              <b>2. Gestión de Vistas Dinámica y Fluida:</b> En lugar de recargar actividades independientes, empleamos una única code <code>MainActivity</code> que alterna dinámicamente la visibilidad (<code>View.GONE</code> / <code>View.VISIBLE</code>) entre el bloque de inicio de sesión (<code>loginLayout</code>) y el de registro <code>registerLayout</code>, optimizando los recursos del sistema.
+              <br>
+              <b>3. Seguridad y Persistencia Local Robusta:</b> Las credenciales de los usuarios no se exponen; se gestionan mediante una base de datos SQLite <code>UserDatabaseHelper</code> aplicando hashing con sal para las contraseñas. Además, el sistema incorpora un mecanismo de migración automática de datos heredados <code>SharedPreferences</code>, asegurando que ningún usuario pierda su cuenta ante futuras actualizaciones.
+              <br>
+              <b>4. Optimización del Ciclo de Vida del Audio:</b> Mediante la clase MediaPlayer, la música ambiental del login <code>yokai_login_theme</code> se reproduce en bucle a volumen moderado (0.25f), pausándose o liberando memoria automáticamente según los estados del ciclo de vida de Android con <code>onResume</code>, <code>onPause</code>, <code>onDestroy</code> para evitar consumos innecesarios de batería o CPU.</p>
+          </div>
+          <ul class="tech-list">
+            <li><code>IntroActivity</code></li>
+            <li><code>MainActivity</code></li>
+            <li><code>RedParticlesView</code></li>
+            <li><code>activity_intro.xml</code> y <code>activity_main.xml</code></li>
+          </ul>
+        </div>
+        <div class="media-slot"><span>Vídeo / GIF del apartado 1</span><small>Añadir archivo multimedia aquí</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="exposition-section" id="bloque-datos">
+      <div class="shell exposition-grid">
+        <div>
+          <div class="kicker">02 · Integrante 2</div>
+          <h2>Base de datos y usuarios</h2>
+          <p class="section-summary">SQLite local, tablas de usuarios y personajes, migración y protección de
+            contraseñas.</p>
+          <div class="speaker-text"><strong>Texto del expositor</strong>
+            <p>Añadir aquí el texto de la exposición.</p>
+          </div>
+          <ul class="tech-list">
+            <li><code>UserDatabaseHelper</code></li>
+            <li><code>onCreate()</code> y <code>onUpgrade()</code></li>
+            <li>PBKDF2 y sal aleatoria</li>
+            <li>Migración desde <code>SharedPreferences</code></li>
+          </ul>
+        </div>
+        <div class="media-slot"><span>Vídeo / GIF del apartado 2</span><small>Añadir archivo multimedia aquí</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="exposition-section" id="bloque-catalogo">
+      <div class="shell exposition-grid">
+        <div>
+          <div class="kicker">03 · Integrante 3</div>
+          <h2>Modelo y catálogo de yokai</h2>
+          <p class="section-summary">Los diez personajes iniciales se modelan, se guardan en SQLite y se muestran en una
+            cuadrícula.</p>
+          <div class="speaker-text"><strong>Texto del expositor</strong>
+            <p>Añadir aquí el texto de la exposición.</p>
+          </div>
+          <ul class="tech-list">
+            <li><code>YokaiCharacter</code> y <code>Datos</code></li>
+            <li><code>CharacterAdapter</code></li>
+            <li><code>RecyclerView</code> con dos columnas</li>
+            <li>Recursos <code>drawable</code></li>
+          </ul>
+        </div>
+        <div class="media-slot"><span>Vídeo / GIF del apartado 3</span><small>Añadir archivo multimedia aquí</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="exposition-section" id="bloque-navegacion">
+      <div class="shell exposition-grid">
+        <div>
+          <div class="kicker">04 · Integrante 4</div>
+          <h2>Navegación, ficha y estado actual</h2>
+          <p class="section-summary">Transición tras el login, selección de yokai, ficha individual y diálogo de
+            confirmación.</p>
+          <div class="speaker-text"><strong>Texto del expositor</strong>
+            <p>Después del inicio de sesión se abre <code>TransitionActivity</code>. Esta pantalla recibe el nombre del usuario mediante un <code>Intent</code> y muestra una bienvenida personalizada. Un <code>Handler</code> programa el paso a la siguiente pantalla tras un segundo; si tocamos la pantalla, podemos avanzar antes.</p>
+            <p>A continuación, <code>SelectCharacterActivity</code> consulta los yokai guardados en SQLite mediante <code>UserDatabaseHelper</code> y los presenta en una cuadrícula. El <code>RecyclerView</code> organiza la lista y <code>CharacterAdapter</code> prepara cada tarjeta con la imagen, el nombre y el tipo.</p>
+            <p>Al seleccionar un yokai, el adaptador abre <code>CharacterActivity</code> y envía su nombre, tipo, descripción e imagen como extras del <code>Intent</code>. La ficha muestra esos datos y permite volver a la selección.</p>
+            <p>Desde la ficha, el botón «Jugar» abre un diálogo de confirmación. En la versión actual, al confirmar se indica que la partida estará disponible próximamente; también se puede cancelar y cerrar el diálogo. Así, la demo recorre la bienvenida, la selección y la ficha, y muestra hasta dónde llega el proyecto.</p>
+          </div>
+          <ul class="tech-list">
+            <li><code>TransitionActivity</code></li>
+            <li><code>SelectCharacterActivity</code></li>
+            <li><code>CharacterActivity</code></li>
+            <li>La partida estará disponible próximamente</li>
+          </ul>
+        </div>
+        <div class="media-slot"><span>Vídeo / GIF del apartado 4</span><small>Añadir archivo multimedia aquí</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="kicker">Demo visual</div>
+          <h2>Los recursos reales ya cuentan la historia.</h2>
+        </div>
+        <div class="showcase">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="eyebrow">Ficha de ejemplo</div>
+              <img src="../app/src/main/res/drawable/akira_kage.png" alt="Ilustración de Akira Kage">
+              <h3>Akira Kage</h3>
+              <p>La app transmite a esta pantalla el nombre, tipo, lore e imagen seleccionados desde la cuadrícula.</p>
+              <a class="button primary" href="#producto">Volver al índice</a>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Catálogo visual disponible</h3>
+            <div class="yokaiCharacter-strip">
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/mizuchi.png"
+                  alt="Akira Kage"><span>Akira Kage</span></div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/genzo.png"
+                  alt="Genzo"><span>Genzo</span></div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/hana.png" alt="Hana"><span>Hana</span>
+              </div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/katsuro.png"
+                  alt="Katsuro"><span>Katsuro</span></div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/kuro.png" alt="Kuro"><span>Kuro</span>
+              </div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/raizen.png"
+                  alt="Raizen"><span>Raizen</span></div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/ren.png" alt="Ren"><span>Ren</span>
+              </div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/shiori.png"
+                  alt="Shiori"><span>Shiori</span></div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/yuki.png" alt="Yuki"><span>Yuki</span>
+              </div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/mizuchi.png"
+                  alt="Mizuchi"><span>Mizuchi</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="integrantes">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="kicker">Equipo</div>
+          <h2>Las personas detrás de Yokai Infection.</h2>
+        </div>
+        <div class="team-grid">
+          <article class="team-card">
+            <div class="member-photo"><img src="Fotos/6.jpg" alt=""></div>
+            <h3>Michael Alessandro Aprile Mancha</h3>
+            <a href="https://github.com/mikeaprilee" target="_blank" rel="noopener noreferrer">@mikeaprilee</a>
+          </article>
+          <article class="team-card">
+            <div class="member-photo"><img src="Fotos/juan-guillermo.jpeg" alt="Juan Guillermo Domínguez Guzmán"></div>
+            <h3>Juan Guillermo Domínguez Guzmán</h3>
+            <a href="https://github.com/JGdg9" target="_blank" rel="noopener noreferrer">@JGdg9</a>
+          </article>
+          <article class="team-card">
+            <div class="member-photo"><img src="Fotos/alberto.jpg" alt="Alberto Martínez Carrasco"></div>
+            <h3>Alberto Martínez Carrasco</h3>
+            <a href="https://github.com/AlbertoMC2401" target="_blank" rel="noopener noreferrer">@AlbertoMC2401</a>
+          </article>
+          <article class="team-card">
+            <div class="member-photo">Añadir foto</div>
+            <h3>Alejandra Morales Devreese</h3>
+            <a href="https://github.com/alejandraamorales" target="_blank"
+              rel="noopener noreferrer">@alejandraamorales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-content">
+      <div>
+        <strong>Yokai Infection</strong>
+        <p class="small">Proyecto Android desarrollado con identidad pixel japonesa, persistencia local y un catálogo de
+          yokai.</p>
+        <p class="copyright">© 2026 Yokai Infection. Todos los derechos reservados.</p>
+      </div>
+      <div class="footer-links">
+        <strong>Equipo en GitHub</strong>
+        <a href="https://github.com/mikeaprilee" target="_blank" rel="noopener noreferrer">Michael Alessandro Aprile
+          Mancha</a>
+        <a href="https://github.com/JGdg9" target="_blank" rel="noopener noreferrer">Juan Guillermo Domínguez Guzmán</a>
+        <a href="https://github.com/AlbertoMC2401" target="_blank" rel="noopener noreferrer">Alberto Martínez
+          Carrasco</a>
+        <a href="https://github.com/alejandraamorales" target="_blank" rel="noopener noreferrer">Alejandra Morales
+          Devreese</a>
+      </div>
+    </div>
+  </footer>
+  <script src="presentacion-yokai.js" defer></script>
+</body>
+
+</html>
