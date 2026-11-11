@@ -13,6 +13,8 @@ import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText etEmail, etPassword;
@@ -120,12 +122,12 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    // MÉTODO DE REGISTRO
+    //Metodo de registro
     private void registerUser() {
 
         String username = etUsername.getText().toString().trim();
         String email = etRegisterEmail.getText().toString()
-                .trim().toLowerCase();
+                .trim().toLowerCase(Locale.ROOT);
         String password = etRegisterPassword.getText().toString();
         String repeatPassword = etRepeatPassword.getText().toString();
 
@@ -200,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
     private void loginUser() {
 
         String email = etEmail.getText().toString()
-                .trim().toLowerCase();
+                .trim().toLowerCase(Locale.ROOT);
         String password = etPassword.getText().toString();
 
         // Comprobar campos vacíos
