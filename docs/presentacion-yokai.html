@@ -1,155 +1,21 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Presentación del estado actual de Yokai Infection V2">
   <title>Yokai Infection V2 · Presentación</title>
-  <style>
-    :root {
-      --ink: #f5f2ff;
-      --muted: #bcb4d5;
-      --night: #090714;
-      --panel: rgba(25, 18, 49, .76);
-      --panel-strong: #1b1234;
-      --purple: #a56cff;
-      --pink: #ff5fa2;
-      --cyan: #66e4ff;
-      --line: rgba(255,255,255,.13);
-      --shadow: 0 24px 70px rgba(0,0,0,.35);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 85% 4%, rgba(165,108,255,.22), transparent 28rem),
-        radial-gradient(circle at 10% 12%, rgba(255,95,162,.15), transparent 22rem),
-        var(--night);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.55;
-    }
-
-    a { color: inherit; }
-    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
-    .topbar {
-      position: sticky; top: 0; z-index: 20;
-      border-bottom: 1px solid var(--line);
-      background: rgba(9,7,20,.78);
-      backdrop-filter: blur(18px);
-    }
-    .topbar-inner { display: flex; justify-content: space-between; align-items: center; min-height: 64px; gap: 20px; }
-    .brand { display: flex; gap: 10px; align-items: center; font-weight: 800; letter-spacing: .03em; }
-    .brand-mark {
-      width: 30px; height: 30px; border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #ffd0e3 0 12%, var(--pink) 13% 48%, #6f235e 49% 100%);
-      box-shadow: 0 0 24px rgba(255,95,162,.6);
-    }
-    nav { display: flex; flex-wrap: wrap; gap: 16px; }
-    nav a { color: var(--muted); text-decoration: none; font-size: .9rem; }
-    nav a:hover { color: var(--ink); }
-
-    .hero { min-height: 760px; display: grid; align-items: center; padding: 90px 0 70px; }
-    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 60px; }
-    .eyebrow { color: var(--cyan); text-transform: uppercase; letter-spacing: .18em; font-size: .78rem; font-weight: 800; }
-    h1, h2, h3 { line-height: 1.08; margin: 0 0 18px; }
-    h1 { font-size: clamp(3rem, 8vw, 6.7rem); max-width: 760px; letter-spacing: -.07em; }
-    h2 { font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.045em; }
-    h3 { font-size: 1.25rem; }
-    .gradient { background: linear-gradient(110deg, #fff 20%, #dda7ff 55%, #ff76ae); color: transparent; background-clip: text; -webkit-background-clip: text; }
-    .lead { max-width: 650px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.3rem); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .button {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 12px 18px; border-radius: 999px; text-decoration: none; font-weight: 800;
-      border: 1px solid var(--line); background: rgba(255,255,255,.05);
-    }
-    .button.primary { border-color: transparent; background: linear-gradient(110deg, var(--purple), var(--pink)); }
-    .hero-card { position: relative; min-height: 510px; display: grid; place-items: center; }
-    .moon {
-      width: min(420px, 72vw); aspect-ratio: 1; border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #fff1fb 0 5%, #ffb1d6 7% 22%, #d54d98 48%, #651b5e 75%, #271132 100%);
-      box-shadow: 0 0 80px rgba(255,95,162,.45), inset -34px -28px 80px rgba(24,7,33,.52);
-      animation: pulse 5s ease-in-out infinite;
-    }
-    .hero-image {
-      position: absolute; width: min(250px, 46vw); bottom: 7%; right: 12%;
-      filter: drop-shadow(0 26px 28px rgba(0,0,0,.65));
-      animation: float 4.5s ease-in-out infinite;
-    }
-    .orbit { position: absolute; inset: 9% 4%; border: 1px solid rgba(102,228,255,.35); border-radius: 50%; transform: rotate(-18deg); }
-    .orbit::after { content: ""; position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--cyan); top: 9%; right: 4%; box-shadow: 0 0 20px var(--cyan); }
-
-    section { padding: 90px 0; }
-    .section-heading { max-width: 720px; margin-bottom: 32px; }
-    .kicker { color: var(--pink); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .card {
-      background: linear-gradient(145deg, rgba(42,27,73,.9), var(--panel));
-      border: 1px solid var(--line); border-radius: 24px; padding: 24px; box-shadow: var(--shadow);
-    }
-    .card p, .card li { color: var(--muted); }
-    .card ul { padding-left: 18px; margin-bottom: 0; }
-    .number { color: var(--cyan); font-size: .8rem; font-weight: 900; letter-spacing: .14em; }
-    .route { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 26px; }
-    .step { padding: 12px 16px; border-radius: 14px; background: rgba(255,255,255,.06); border: 1px solid var(--line); font-weight: 800; }
-    .arrow { color: var(--pink); font-weight: 900; }
-    .showcase { display: grid; grid-template-columns: .85fr 1.15fr; gap: 24px; align-items: stretch; }
-    .phone {
-      min-height: 470px; border: 10px solid #2a1b43; border-radius: 36px; overflow: hidden;
-      background: linear-gradient(180deg, #1a1230, #090714); box-shadow: var(--shadow); position: relative;
-    }
-    .phone::before { content: ""; display: block; width: 90px; height: 18px; border-radius: 0 0 14px 14px; background: #2a1b43; margin: 0 auto; }
-    .phone-screen { padding: 25px 22px; text-align: center; }
-    .phone-screen img { max-width: 68%; max-height: 220px; object-fit: contain; filter: drop-shadow(0 18px 20px rgba(0,0,0,.45)); }
-    .phone-screen h3 { margin-top: 16px; color: #fff; }
-    .phone-screen p { color: var(--muted); font-size: .9rem; }
-    .code {
-      overflow: auto; margin: 0; padding: 20px; border-radius: 18px; background: #0c0918;
-      color: #d7cdf8; border: 1px solid var(--line); font: .84rem/1.7 "SFMono-Regular", Consolas, monospace;
-    }
-    .code .key { color: #ff91bf; } .code .type { color: #8cecff; } .code .comment { color: #74698c; }
-    .timeline { display: grid; gap: 14px; }
-    .timeline-item { display: grid; grid-template-columns: 110px 1fr; gap: 20px; align-items: start; padding: 18px 0; border-top: 1px solid var(--line); }
-    .timeline-item strong { color: var(--cyan); }
-    .yokaiCharacter-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-    .yokaiCharacter {
-      aspect-ratio: .78; border-radius: 18px; overflow: hidden; position: relative; background: #161025; border: 1px solid var(--line);
-    }
-    .yokaiCharacter img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
-    .yokaiCharacter:hover img { transform: scale(1.08); }
-    .yokaiCharacter span { position: absolute; left: 9px; right: 9px; bottom: 8px; padding: 5px 7px; border-radius: 8px; background: rgba(9,7,20,.72); font-size: .72rem; font-weight: 800; }
-    footer { padding: 40px 0 70px; color: var(--muted); border-top: 1px solid var(--line); }
-    .small { font-size: .9rem; color: var(--muted); }
-    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.035); } }
-    @keyframes float { 0%,100% { transform: translateY(0) rotate(2deg); } 50% { transform: translateY(-14px) rotate(-2deg); } }
-    @media (max-width: 900px) {
-      .hero-grid, .showcase { grid-template-columns: 1fr; }
-      .hero { min-height: auto; padding-top: 70px; }
-      .hero-card { min-height: 430px; }
-      .grid-4 { grid-template-columns: repeat(2, 1fr); }
-      .grid-3 { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 560px) {
-      .shell { width: min(100% - 28px, 1180px); }
-      nav { display: none; }
-      section { padding: 65px 0; }
-      .grid-4, .yokaiCharacter-strip { grid-template-columns: repeat(2, 1fr); }
-      .timeline-item { grid-template-columns: 1fr; gap: 5px; }
-    }
-  </style>
+  <link rel="stylesheet" href="presentacion-yokai.css">
 </head>
+
 <body>
   <header class="topbar">
     <div class="shell topbar-inner">
-      <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true"></span>YOKAI INFECTION V2</a>
+      <a class="brand" href="#inicio"><img class="brand-mark" src="../app/src/main/res/drawable/icono.jpeg" alt=""><span class="brand-title">YOKAI INFECTION</span></a>
       <nav aria-label="Navegación de la presentación">
-        <a href="#producto">Producto</a>
-        <a href="#reparto">4 bloques</a>
-        <a href="#arquitectura">Código</a>
+        <a href="#producto">Índice</a>
+        <a href="#reparto">Exposición</a>
         <a href="#demo">Demo visual</a>
       </nav>
     </div>
@@ -159,19 +25,13 @@
     <section class="hero" id="inicio">
       <div class="shell hero-grid">
         <div>
-          <div class="eyebrow">Presentación de estado actual · Android nativo</div>
+          <div class="eyebrow">Presentación de estado actual · Android</div>
           <h1>Entra en la noche.<br><span class="gradient">Conoce tu yokai.</span></h1>
-          <p class="lead">Yokai Infection V2 es una experiencia Android centrada en un acceso local, una transición narrativa y un catálogo visual de diez yokai con ficha de lore.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#demo">Ver recorrido</a>
-            <a class="button" href="#arquitectura">Entender el código</a>
-          </div>
-          <p class="small">Presentación basada en el código y recursos existentes del repositorio. No se simulan funcionalidades que la app aún no implementa.</p>
+          <p class="lead">Yokai Infection, un juego donde te invadirán los espíritus yokai.</p>
         </div>
-        <div class="hero-card" aria-label="Composición visual con luna roja y personaje">
-          <div class="orbit"></div>
+        <div class="hero-card" aria-label="Composición visual con luna roja e icono de la aplicación">
           <div class="moon"></div>
-          <img class="hero-image" src="../app/src/main/res/drawable/akira_kage.png" alt="Ilustración de Akira Kage">
+          <img class="hero-image" src="../app/src/main/res/drawable/icono.jpeg" alt="Icono de Yokai Infection">
         </div>
       </div>
     </section>
@@ -179,21 +39,38 @@
     <section id="producto">
       <div class="shell">
         <div class="section-heading">
-          <div class="kicker">01 · Visión de producto</div>
-          <h2>Una demo jugable con identidad propia.</h2>
-          <p class="lead">El recorrido actual está diseñado para que el usuario pase de la bienvenida a la exploración de personajes en pocos pasos y con una atmósfera reconocible.</p>
+          <div class="kicker">Índice de la exposición</div>
+          <h2>Cuatro apartados para contar el proyecto.</h2>
+          <p class="lead">Cada bloque lleva a un apartado independiente donde el integrante correspondiente podrá
+            desarrollar su parte y añadir su vídeo o GIF.</p>
         </div>
         <div class="grid-4">
-          <article class="card"><div class="number">01 / ACCESO</div><h3>Login y registro</h3><p>Cuenta local con validación de correo, contraseña mínima y confirmación de credenciales.</p></article>
-          <article class="card"><div class="number">02 / ATMÓSFERA</div><h3>Luna roja</h3><p>Una transición breve da contexto al acceso y puede omitirse tocando la pantalla.</p></article>
-          <article class="card"><div class="number">03 / EXPLORACIÓN</div><h3>Catálogo de yokai</h3><p>La selección se construye desde SQLite y muestra retrato, nombre y tipo en una cuadrícula.</p></article>
-          <article class="card"><div class="number">04 / LORE</div><h3>Ficha individual</h3><p>La ficha presenta imagen, nombre, tipo y descripción, con regreso directo a la selección.</p></article>
+          <a class="card index-card" href="#bloque-acceso">
+            <div class="number">01 / ACCESO</div>
+            <h3>Introducción, diseño y acceso</h3>
+            <p>Vídeo introductorio, estética, login, registro, música y partículas.</p>
+          </a>
+          <a class="card index-card" href="#bloque-datos">
+            <div class="number">02 / DATOS</div>
+            <h3>Base de datos y usuarios</h3>
+            <p>Persistencia local, usuarios, migración y protección de contraseñas.</p>
+          </a>
+          <a class="card index-card" href="#bloque-catalogo">
+            <div class="number">03 / CATÁLOGO</div>
+            <h3>Modelo y catálogo de yokai</h3>
+            <p>Modelo, datos iniciales, SQLite, RecyclerView y tarjetas.</p>
+          </a>
+          <a class="card index-card" href="#bloque-navegacion">
+            <div class="number">04 / RECORRIDO</div>
+            <h3>Navegación, ficha y estado actual</h3>
+            <p>Transición, selección, ficha y situación actual de la partida.</p>
+          </a>
         </div>
-        <div class="route" aria-label="Flujo de navegación">
-          <span class="step">Login / registro</span><span class="arrow">→</span>
-          <span class="step">Transición</span><span class="arrow">→</span>
-          <span class="step">Selección</span><span class="arrow">→</span>
-          <span class="step">Ficha yokai</span>
+        <div class="route" aria-label="Índice de apartados">
+          <span class="step">01 Acceso</span><span class="arrow">→</span>
+          <span class="step">02 Datos</span><span class="arrow">→</span>
+          <span class="step">03 Catálogo</span><span class="arrow">→</span>
+          <span class="step">04 Recorrido</span>
         </div>
       </div>
     </section>
@@ -201,50 +78,98 @@
     <section id="reparto">
       <div class="shell">
         <div class="section-heading">
-          <div class="kicker">02 · Reparto equilibrado</div>
+          <div class="kicker">Apartados independientes</div>
           <h2>Cuatro voces, una historia técnica.</h2>
-          <p class="lead">Cada bloque combina una lectura de producto con las clases y recursos que la hacen posible.</p>
-        </div>
-        <div class="grid-4">
-          <article class="card"><div class="number">INTEGRANTE 1</div><h3>Problema, propuesta y acceso</h3><p>Presenta el concepto, el público de la demo y el flujo de login/registro.</p><ul><li><code>MainActivity</code></li><li>Validaciones de formulario</li><li>Música del login</li></ul></article>
-          <article class="card"><div class="number">INTEGRANTE 2</div><h3>Persistencia y confianza</h3><p>Explica la base SQLite local, el modelo de usuarios y la evolución del esquema.</p><ul><li><code>UserDatabaseHelper</code></li><li>PBKDF2 + sal aleatoria</li><li>Migración desde preferencias</li></ul></article>
-          <article class="card"><div class="number">INTEGRANTE 3</div><h3>Universo de personajes</h3><p>Cuenta cómo el catálogo se modela, se carga desde la base de datos y se convierte en tarjetas.</p><ul><li><code>Character</code> y <code>Datos</code></li><li>10 yokai iniciales</li><li>Drawables y cuadrícula</li></ul></article>
-          <article class="card"><div class="number">INTEGRANTE 4</div><h3>Recorrido y cierre</h3><p>Hace la demo de transición, selección y ficha, y cierra con el estado actual y próximos pasos.</p><ul><li><code>TransitionActivity</code></li><li><code>SelectCharacterActivity</code></li><li><code>CharacterActivity</code></li></ul></article>
+          <p class="lead">Cada integrante tiene su propio espacio para añadir el texto de su exposición y el vídeo o GIF
+            correspondiente.</p>
         </div>
       </div>
     </section>
 
-    <section id="arquitectura">
-      <div class="shell">
-        <div class="section-heading">
-          <div class="kicker">03 · Cómo está construido</div>
-          <h2>Simple por fuera, consistente por dentro.</h2>
-          <p class="lead">La arquitectura separa pantallas, datos y recursos Android para que el flujo sea fácil de seguir durante una presentación académica.</p>
+    <section class="exposition-section" id="bloque-acceso">
+      <div class="shell exposition-grid">
+        <div>
+          <div class="kicker">01 · Integrante 1</div>
+          <h2>Introducción, diseño y acceso</h2>
+          <p class="section-summary">Vídeo introductorio, estética pixel japonesa, login, registro, música ambiental y
+            partículas rojas.</p>
+          <div class="speaker-text"><strong>Texto del expositor</strong>
+            <p>Añadir aquí el texto de la exposición.</p>
+          </div>
+          <ul class="tech-list">
+            <li><code>IntroActivity</code></li>
+            <li><code>MainActivity</code></li>
+            <li><code>RedParticlesView</code></li>
+            <li><code>activity_intro.xml</code> y <code>activity_main.xml</code></li>
+          </ul>
         </div>
-        <div class="showcase">
-          <div class="card">
-            <h3>Mapa del proyecto</h3>
-            <div class="timeline">
-              <div class="timeline-item"><strong>Java</strong><span>Actividades y lógica de navegación en <code>app/src/main/java</code>.</span></div>
-              <div class="timeline-item"><strong>SQLite</strong><span>Tablas <code>users</code> y <code>personajes</code> en <code>yokai_users.db</code>.</span></div>
-              <div class="timeline-item"><strong>Layouts</strong><span>Cuatro interfaces XML en <code>app/src/main/res/layout</code>.</span></div>
-              <div class="timeline-item"><strong>Recursos</strong><span>Retratos PNG, tema visual, iconos y audio MP3 en <code>res</code>.</span></div>
-            </div>
-          </div>
-          <div class="card">
-            <h3>Decisiones que merece la pena explicar</h3>
-            <pre class="code"><span class="comment">// Catálogo inicial, una sola vez por personaje</span>
-<span class="key">insertInitialCharacters</span>(db);
+        <div class="media-slot"><span>Vídeo / GIF del apartado 1</span><small>Añadir archivo multimedia aquí</small>
+        </div>
+      </div>
+    </section>
 
-<span class="comment">// La pantalla consulta SQLite</span>
-List&lt;<span class="type">Character</span>&gt; yokaiCharacters =
-    database.<span class="key">getCharacters</span>();
-
-<span class="comment">// La contraseña no se guarda en texto plano</span>
-passwordHash = <span class="key">hashPassword</span>(password, salt);
-<span class="key">MessageDigest.isEqual</span>(saved, entered);</pre>
-            <p class="small">El esquema V2 añade personajes sin borrar las cuentas existentes de la versión anterior.</p>
+    <section class="exposition-section" id="bloque-datos">
+      <div class="shell exposition-grid">
+        <div>
+          <div class="kicker">02 · Integrante 2</div>
+          <h2>Base de datos y usuarios</h2>
+          <p class="section-summary">SQLite local, tablas de usuarios y personajes, migración y protección de
+            contraseñas.</p>
+          <div class="speaker-text"><strong>Texto del expositor</strong>
+            <p>Añadir aquí el texto de la exposición.</p>
           </div>
+          <ul class="tech-list">
+            <li><code>UserDatabaseHelper</code></li>
+            <li><code>onCreate()</code> y <code>onUpgrade()</code></li>
+            <li>PBKDF2 y sal aleatoria</li>
+            <li>Migración desde <code>SharedPreferences</code></li>
+          </ul>
+        </div>
+        <div class="media-slot"><span>Vídeo / GIF del apartado 2</span><small>Añadir archivo multimedia aquí</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="exposition-section" id="bloque-catalogo">
+      <div class="shell exposition-grid">
+        <div>
+          <div class="kicker">03 · Integrante 3</div>
+          <h2>Modelo y catálogo de yokai</h2>
+          <p class="section-summary">Los diez personajes iniciales se modelan, se guardan en SQLite y se muestran en una
+            cuadrícula.</p>
+          <div class="speaker-text"><strong>Texto del expositor</strong>
+            <p>Añadir aquí el texto de la exposición.</p>
+          </div>
+          <ul class="tech-list">
+            <li><code>YokaiCharacter</code> y <code>Datos</code></li>
+            <li><code>CharacterAdapter</code></li>
+            <li><code>RecyclerView</code> con dos columnas</li>
+            <li>Recursos <code>drawable</code></li>
+          </ul>
+        </div>
+        <div class="media-slot"><span>Vídeo / GIF del apartado 3</span><small>Añadir archivo multimedia aquí</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="exposition-section" id="bloque-navegacion">
+      <div class="shell exposition-grid">
+        <div>
+          <div class="kicker">04 · Integrante 4</div>
+          <h2>Navegación, ficha y estado actual</h2>
+          <p class="section-summary">Transición tras el login, selección de yokai, ficha individual y diálogo de
+            confirmación.</p>
+          <div class="speaker-text"><strong>Texto del expositor</strong>
+            <p>Añadir aquí el texto de la exposición.</p>
+          </div>
+          <ul class="tech-list">
+            <li><code>TransitionActivity</code></li>
+            <li><code>SelectCharacterActivity</code></li>
+            <li><code>CharacterActivity</code></li>
+            <li>La partida estará disponible próximamente</li>
+          </ul>
+        </div>
+        <div class="media-slot"><span>Vídeo / GIF del apartado 4</span><small>Añadir archivo multimedia aquí</small>
         </div>
       </div>
     </section>
@@ -252,46 +177,102 @@ passwordHash = <span class="key">hashPassword</span>(password, salt);
     <section id="demo">
       <div class="shell">
         <div class="section-heading">
-          <div class="kicker">04 · Demo visual</div>
+          <div class="kicker">Demo visual</div>
           <h2>Los recursos reales ya cuentan la historia.</h2>
-          <p class="lead">La presentación reutiliza imágenes del directorio <code>drawable</code>. Las animaciones de esta página son CSS y solo representan atmósfera; no sustituyen funciones de la app.</p>
         </div>
         <div class="showcase">
           <div class="phone">
             <div class="phone-screen">
               <div class="eyebrow">Ficha de ejemplo</div>
-              <img src="../app/src/main/res/drawable/mizuchi.png" alt="Ilustración de Mizuchi">
-              <h3>Mizuchi</h3>
+              <img src="../app/src/main/res/drawable/akira_kage.png" alt="Ilustración de Akira Kage">
+              <h3>Akira Kage</h3>
               <p>La app transmite a esta pantalla el nombre, tipo, lore e imagen seleccionados desde la cuadrícula.</p>
-              <a class="button primary" href="#producto">Volver al flujo</a>
+              <a class="button primary" href="#producto">Volver al índice</a>
             </div>
           </div>
           <div class="card">
             <h3>Catálogo visual disponible</h3>
             <div class="yokaiCharacter-strip">
-              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/akira_kage.png" alt="Akira Kage"><span>Akira Kage</span></div>
-              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/genzo.png" alt="Genzo"><span>Genzo</span></div>
-              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/hana.png" alt="Hana"><span>Hana</span></div>
-              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/katsuro.png" alt="Katsuro"><span>Katsuro</span></div>
-              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/kuro.png" alt="Kuro"><span>Kuro</span></div>
-              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/raizen.png" alt="Raizen"><span>Raizen</span></div>
-              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/ren.png" alt="Ren"><span>Ren</span></div>
-              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/shiori.png" alt="Shiori"><span>Shiori</span></div>
-              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/yuki.png" alt="Yuki"><span>Yuki</span></div>
-              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/portada.png" alt="Portada de Yokai Infection"><span>Portada</span></div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/mizuchi.png"
+                  alt="Akira Kage"><span>Akira Kage</span></div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/genzo.png"
+                  alt="Genzo"><span>Genzo</span></div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/hana.png" alt="Hana"><span>Hana</span>
+              </div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/katsuro.png"
+                  alt="Katsuro"><span>Katsuro</span></div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/kuro.png" alt="Kuro"><span>Kuro</span>
+              </div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/raizen.png"
+                  alt="Raizen"><span>Raizen</span></div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/ren.png" alt="Ren"><span>Ren</span>
+              </div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/shiori.png"
+                  alt="Shiori"><span>Shiori</span></div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/yuki.png" alt="Yuki"><span>Yuki</span>
+              </div>
+              <div class="yokaiCharacter"><img src="../app/src/main/res/drawable/mizuchi.png"
+                  alt="Mizuchi"><span>Mizuchi</span></div>
             </div>
-            <p class="small">Para la demo Android: registra una cuenta de prueba, inicia sesión y recorre las cuatro pantallas. La base de datos y las cuentas son locales al dispositivo.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="integrantes">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="kicker">Equipo</div>
+          <h2>Las personas detrás de Yokai Infection.</h2>
+        </div>
+        <div class="team-grid">
+          <article class="team-card">
+            <div class="member-photo"><img src="Fotos/6.jpg" alt=""></div>
+            <h3>Michael Alessandro Aprile Mancha</h3>
+            <a href="https://github.com/mikeaprilee" target="_blank" rel="noopener noreferrer">@mikeaprilee</a>
+          </article>
+          <article class="team-card">
+            <div class="member-photo">Añadir foto</div>
+            <h3>Juan Guillermo Domínguez Guzmán</h3>
+            <a href="https://github.com/JGdg9" target="_blank" rel="noopener noreferrer">@JGdg9</a>
+          </article>
+          <article class="team-card">
+            <div class="member-photo">Añadir foto</div>
+            <h3>Alberto Martínez Carrasco</h3>
+            <a href="https://github.com/AlbertoMC2401" target="_blank" rel="noopener noreferrer">@AlbertoMC2401</a>
+          </article>
+          <article class="team-card">
+            <div class="member-photo">Añadir foto</div>
+            <h3>Alejandra Morales Devreese</h3>
+            <a href="https://github.com/alejandraamorales" target="_blank"
+              rel="noopener noreferrer">@alejandraamorales</a>
+          </article>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="shell">
-      <strong>Yokai Infection V2</strong>
-      <p class="small">Estado documentado a partir del repositorio actual. Guion de exposición: <code>docs/guion-presentacion-yokai.md</code>.</p>
+    <div class="shell footer-content">
+      <div>
+        <strong>Yokai Infection</strong>
+        <p class="small">Proyecto Android desarrollado con identidad pixel japonesa, persistencia local y un catálogo de
+          yokai.</p>
+        <p class="copyright">© 2026 Yokai Infection. Todos los derechos reservados.</p>
+      </div>
+      <div class="footer-links">
+        <strong>Equipo en GitHub</strong>
+        <a href="https://github.com/mikeaprilee" target="_blank" rel="noopener noreferrer">Michael Alessandro Aprile
+          Mancha</a>
+        <a href="https://github.com/JGdg9" target="_blank" rel="noopener noreferrer">Juan Guillermo Domínguez Guzmán</a>
+        <a href="https://github.com/AlbertoMC2401" target="_blank" rel="noopener noreferrer">Alberto Martínez
+          Carrasco</a>
+        <a href="https://github.com/alejandraamorales" target="_blank" rel="noopener noreferrer">Alejandra Morales
+          Devreese</a>
+      </div>
     </div>
   </footer>
+  <script src="presentacion-yokai.js" defer></script>
 </body>
+
 </html>
