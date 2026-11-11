@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.content.SharedPreferences;
@@ -36,6 +37,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Particulas de flores
+        FrameLayout root = findViewById(R.id.mainRoot);
+
+        RedParticlesView particles = new RedParticlesView(this);
+
+        root.addView(
+                particles,
+                1,
+                new FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.MATCH_PARENT,
+                        FrameLayout.LayoutParams.MATCH_PARENT
+                )
+        );
+
+        startBackgroundMusic();
         // Música ambiental del login, en bucle y a volumen moderado.
         startBackgroundMusic();
 
