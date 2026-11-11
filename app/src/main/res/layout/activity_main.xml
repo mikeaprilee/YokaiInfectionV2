@@ -1,9 +1,10 @@
 
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#090909">
+    android:background="@color/yokai_background">
 
     <!-- PORTADA -->
     <ImageView
@@ -32,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="妖 怪"
-                android:textColor="#C62828"
+                android:textColor="@color/yokai_red"
                 android:textSize="34sp"
                 android:textStyle="bold"
                 android:fontFamily="monospace"
@@ -43,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="YOKAI INFECTION"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/yokai_text_primary"
                 android:textSize="23sp"
                 android:textStyle="bold"
                 android:fontFamily="monospace"
@@ -57,21 +58,23 @@
                 android:id="@+id/loginLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/login_panel_background"
+                android:gravity="center"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:padding="18dp">
 
                 <EditText
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
-                    android:backgroundTint="#C62828"
+                    android:backgroundTint="@color/yokai_red"
                     android:fontFamily="monospace"
                     android:hint="CORREO ELECTRONICO"
                     android:inputType="textEmailAddress"
                     android:padding="12dp"
                     android:singleLine="true"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#FFFFFF"
+                    android:textColor="@color/yokai_text_primary"
+                    android:textColorHint="@color/yokai_text_primary"
                     android:textSize="14sp" />
 
                 <EditText
@@ -82,12 +85,12 @@
                     android:hint="CONTRASEÑA"
                     android:inputType="textPassword"
                     android:singleLine="true"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#FFFFFF"
+                    android:textColor="@color/yokai_text_primary"
+                    android:textColorHint="@color/yokai_text_primary"
                     android:textSize="14sp"
                     android:fontFamily="monospace"
                     android:padding="12dp"
-                    android:backgroundTint="#C62828" />
+                    android:backgroundTint="@color/yokai_red" />
 
                 <Button
                     android:id="@+id/btnLogin"
@@ -95,11 +98,11 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:text="▶ ENTRAR"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/yokai_text_primary"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:fontFamily="monospace"
-                    android:backgroundTint="#B71C1C" />
+                    android:backgroundTint="@color/yokai_red_dark" />
 
                 <Button
                     android:id="@+id/btnGoRegister"
@@ -107,11 +110,11 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="8dp"
                     android:text="▶ REGISTRARSE"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/yokai_text_primary"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:fontFamily="monospace"
-                    android:backgroundTint="#111111" />
+                    android:backgroundTint="@color/yokai_button_dark" />
 
             </LinearLayout>
 
@@ -122,13 +125,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:visibility="gone">
+                android:visibility="gone"
+                android:background="@drawable/login_panel_background"
+                android:padding="18dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CREAR CUENTA"
-                    android:textColor="#C62828"
+                    android:textColor="@color/yokai_red"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:fontFamily="monospace"
@@ -141,12 +146,12 @@
                     android:hint="NOMBRE DE USUARIO"
                     android:inputType="textPersonName"
                     android:singleLine="true"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#FFFFFF"
+                    android:textColor="@color/yokai_text_primary"
+                    android:textColorHint="@color/yokai_text_primary"
                     android:textSize="14sp"
                     android:fontFamily="monospace"
                     android:padding="12dp"
-                    android:backgroundTint="#C62828" />
+                    android:backgroundTint="@color/yokai_red" />
 
                 <EditText
                     android:id="@+id/etRegisterEmail"
@@ -156,12 +161,12 @@
                     android:hint="CORREO ELECTRONICO"
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#FFFFFF"
+                    android:textColor="@color/yokai_text_primary"
+                    android:textColorHint="@color/yokai_text_primary"
                     android:textSize="14sp"
                     android:fontFamily="monospace"
                     android:padding="12dp"
-                    android:backgroundTint="#C62828" />
+                    android:backgroundTint="@color/yokai_red" />
 
                 <EditText
                     android:id="@+id/etRegisterPassword"
@@ -171,12 +176,12 @@
                     android:hint="CONTRASEÑA"
                     android:inputType="textPassword"
                     android:singleLine="true"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#FFFFFF"
+                    android:textColor="@color/yokai_text_primary"
+                    android:textColorHint="@color/yokai_text_primary"
                     android:textSize="14sp"
                     android:fontFamily="monospace"
                     android:padding="12dp"
-                    android:backgroundTint="#C62828" />
+                    android:backgroundTint="@color/yokai_red" />
 
                 <EditText
                     android:id="@+id/etRepeatPassword"
@@ -186,21 +191,21 @@
                     android:hint="REPETIR CONTRASEÑA"
                     android:inputType="textPassword"
                     android:singleLine="true"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#FFFFFF"
+                    android:textColor="@color/yokai_text_primary"
+                    android:textColorHint="@color/yokai_text_primary"
                     android:textSize="14sp"
                     android:fontFamily="monospace"
                     android:padding="12dp"
-                    android:backgroundTint="#C62828" />
+                    android:backgroundTint="@color/yokai_red" />
 
                 <CheckBox
                     android:id="@+id/cbAcceptCookies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:buttonTint="#C62828"
+                    android:buttonTint="@color/yokai_red"
                     android:text="Acepto el uso de cookies"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/yokai_text_primary"
                     android:textSize="13sp"
                     android:fontFamily="monospace" />
 
@@ -210,11 +215,11 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="18dp"
                     android:text="▶ CREAR CUENTA"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/yokai_text_primary"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:fontFamily="monospace"
-                    android:backgroundTint="#B71C1C" />
+                    android:backgroundTint="@color/yokai_red_dark" />
 
                 <Button
                     android:id="@+id/btnBackLogin"
@@ -222,11 +227,11 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="8dp"
                     android:text="VOLVER AL LOGIN"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/yokai_text_primary"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:fontFamily="monospace"
-                    android:backgroundTint="#111111" />
+                    android:backgroundTint="@color/yokai_button_dark" />
 
             </LinearLayout>
 

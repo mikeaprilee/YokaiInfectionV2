@@ -8,11 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +37,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Música ambiental del login, en bucle y a volumen moderado.
+        //Particulas de flores
+        FrameLayout root = findViewById(R.id.mainRoot);
+
+        RedParticlesView particles = new RedParticlesView(this);
+
+        root.addView(
+                particles,
+                1,
+                new FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.MATCH_PARENT,
+                        FrameLayout.LayoutParams.MATCH_PARENT
+                )
+        );
+
         startBackgroundMusic();
 
         // Base de datos SQLite local. También migra cuentas antiguas si existen.
@@ -123,12 +139,12 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    // MÉTODO DE REGISTRO
+    //Metodo de registro
     private void registerUser() {
 
         String username = etUsername.getText().toString().trim();
         String email = etRegisterEmail.getText().toString()
-                .trim().toLowerCase();
+                .trim().toLowerCase(Locale.ROOT);
         String password = etRegisterPassword.getText().toString();
         String repeatPassword = etRepeatPassword.getText().toString();
 
@@ -212,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
     private void loginUser() {
 
         String email = etEmail.getText().toString()
-                .trim().toLowerCase();
+                .trim().toLowerCase(Locale.ROOT);
         String password = etPassword.getText().toString();
 
         // Comprobar campos vacíos
